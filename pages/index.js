@@ -1,6 +1,6 @@
 export default function Home({ data }) {
   return (
-    <div className='grid max-w-screen-2xl	m-auto p-14 lg:p-24'>
+    <div className='grid max-w-screen-2xl m-auto p-14 lg:p-24'>
       <h1 className='mb-10'>
         <span className='font-extrabold text-6xl'>Abate</span><br/>
         <span className='font-light text-2xl'>News Simplified</span>
