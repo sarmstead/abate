@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-const getCNNLinks = (cnnUrl) => {
+const getCNNLinks = (cnnUrl, num) => {
     return new Promise((resolve) => {
         resolve(
             axios(cnnUrl)
@@ -18,9 +18,18 @@ const getCNNLinks = (cnnUrl) => {
                 })
                 return endPointArray;
             }).then(endPointArray => {
-                return endPointArray
+                if (num) {
+                    endPointArray.length = num;
+                    endPointArray = endPointArray.filter(link => {
+                        if (link) {
+                            return link;
+                        }
+                    })
+                }
+
+                return endPointArray;
             }).catch(error => {
-                return error
+                return error;
             })
         )
     })
