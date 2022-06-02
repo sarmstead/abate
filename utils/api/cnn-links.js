@@ -20,12 +20,14 @@ const getCNNLinks = (cnnUrl, num) => {
             }).then(endPointArray => {
                 if (num) {
                     endPointArray.length = num;
-                    endPointArray = endPointArray.filter(link => {
-                        if (link) {
-                            return link;
-                        }
-                    })
                 }
+
+                // Filter out null indicies
+                endPointArray = endPointArray.filter(link => {
+                  if (link) {
+                      return link;
+                  }
+                })
 
                 return endPointArray;
             }).catch(error => {
