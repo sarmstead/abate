@@ -53,7 +53,7 @@ const handler = async (req, res) => {
             }
         }
 
-        res.status(200).json({ articles: responses })
+        res.status(200).json({ articles: responses, total: responses.length })
     }
     catch(error) {
         res.status(500).send({ error: `Failed to fetch data from ${cnnUrl}: ${error}` })
