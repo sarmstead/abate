@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Home({ data }) {
   return (
     <div className='grid max-w-screen-2xl m-auto p-14 lg:p-24'>
@@ -6,14 +8,9 @@ export default function Home({ data }) {
         <span className='font-light text-2xl'>News Simplified</span>
       </h1>
       {
-        data.articles.map((article, index) => {
+        data.links.map((link, index) => {
           return (
-            <article key={index} className='mb-20 last:mb-0'>
-              <h2 className='font-medium text-3xl mb-6'>{article.title}</h2>
-              {article.content.map((paragraph, index) => {
-                return <p key={index} className='text-lg leading-7 mb-2'>{paragraph}</p>
-              })}
-            </article>
+              <Link href={`/news/cnn/${link.id}`} key={index}><a target='_blank' className='font-medium text-3xl mb-6'>{link.title}</a></Link>
           )
         })
       }
@@ -21,9 +18,13 @@ export default function Home({ data }) {
   )
 }
 
-export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/news/cnn`);
+export const getStaticProps = async () => {
+  const res = await fetch(`http://localhost:3000/api/news/cnn/links?num=10`);
   const data = await res.json();
   
-  return { props: {data} }
+  return { 
+    props: {data},
+    revalidate: 3600
+  
+  }
 }
