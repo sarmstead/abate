@@ -19,7 +19,7 @@ export default function Home({ data }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.ABATE_URL}/api/news/cnn/links?num=10`);
+  const res = await fetch('/api/news/cnn/links?num=10');
   const data = await res.json();
   
   return { 
