@@ -1,34 +1,59 @@
-import { useRouter } from 'next/router';
-import getCNNLinks from '../../../utils/api/cnn-links';
+import { useEffect, useState } from 'react';
 
 const Article = (props) => {
-  const router = useRouter();
-  console.log('Context:', props)
-  const { article } = router.query;
+  const { articleId } = props
+  const [ data, setData ] = useState({})
+  const [ isLoading, setIsLoading ] = useState(true)
+  const [ error, setError ] = useState(false)
+  
+  useEffect(() => {
+    async function fetchData() {
+      setIsLoading(true)
 
-  return <p>Article Rendered: {article}</p>
+      try {
+        const res = await fetch(`/api/news/cnn/single?id=${articleId}`);
+        const responseData = await res.json();
+        setData(responseData.article[0]);
+      }
+      catch (error){
+        console.error(error)
+        setError(error.toString())
+      }
+
+      setIsLoading(false)
+    }
+
+    fetchData()
+  }, [articleId])
+
+  if(error) {
+    return (
+      <p>Yikes! We came across the following error:
+        <br />
+        <span className='italic text-red-500'>{error}</span>
+      </p>
+    )
+  }
+
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }
+
+  return (
+  <article>
+    <p>{data.title}</p>
+    {data.content.map((paragraph, index) => {
+      return <p key={index}>{paragraph}</p>
+  })}
+  </article>
+  
+  )
 }
 
-// export const getStaticPaths = async () => {
-//   const allLinks = await getCNNLinks('https://lite.cnn.com');
-//   const ids = allLinks.map(link => {
-//     return link.id
-//   })
-  
-//   return {
-//     paths: [
-//       { params: { article: ids } }
-//     ],
-//     fallback: true
-//   };
-// }
-
-// export const getStaticProps = (context) => {
-//   // TO DO: create function to get single article from CNN. Put the function here to fetch.
-//   const endpoint = `https://lite.cnn.com/en/article/${context.params.article[0]}`
-//   return {
-//     props: { endpoint }
-//   }
-// }
+export const getServerSideProps = (context) => {
+  return {
+    props: { articleId: context.params.article[0] }
+  }
+}
 
 export default Article;
