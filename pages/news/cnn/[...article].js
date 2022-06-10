@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import TopNav from '../../../components/global/top-nav';
+
 const Article = (props) => {
   const { articleId } = props
   const [ data, setData ] = useState({})
@@ -40,13 +42,15 @@ const Article = (props) => {
   }
 
   return (
-  <article>
-    <p>{data.title}</p>
-    {data.content.map((paragraph, index) => {
-      return <p key={index}>{paragraph}</p>
-  })}
-  </article>
-  
+    <>
+      <TopNav />
+      <article className='dark:text-white'>
+        <p>{data.title}</p>
+        {data.content.map((paragraph, index) => {
+          return <p key={index}>{paragraph}</p>
+      })}
+      </article>
+    </>
   )
 }
 
