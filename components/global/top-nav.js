@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import Icon from './icon';
+import Logo from './logo';
+import Sandwich from './icon/sandwich';
 
 const TopNav = () => {
 
@@ -27,15 +29,23 @@ const TopNav = () => {
   }
 
   return (
-    <nav className='max-w-screen-2xl m-auto pt-20'>
-      <button className='hidden dark:flex gap-2' onClick={handleClickLight}>
-        <Icon name='light-mode' />
-        <span className='text-white'>Toggle Light Mode</span>
+    <nav className='grid grid-cols-3 items-center py-4 px-5 dark:bg-accent-dark-gray border-y dark:border-0 border-complementary-salmon border-solid'>
+      <button className='justify-self-start'>
+        <Icon name='sandwich' />
       </button>
-      <button className='flex dark:hidden gap-2' onClick={handleClickDark}>
-        <Icon name='dark-mode' />
-        <span>Toggle Dark Mode</span>
-      </button>
+     
+      <div className='justify-self-center'>
+        <Logo width='w-24 md:w-32' />
+      </div>
+      <div className='justify-self-end'>
+        <button className='hidden dark:block gap-2' onClick={handleClickLight}>
+          <Icon name='light-mode' />
+        </button>
+        <button className='block dark:hidden gap-2' onClick={handleClickDark}>
+          <Icon name='dark-mode' />
+        </button>
+      </div>
+      
     </nav>
   )
 }

@@ -1,5 +1,6 @@
-import LightMode from "./light-mode";
-import DarkMode from "./dark-mode";
+import LightMode from './light-mode';
+import DarkMode from './dark-mode';
+import Sandwich from './sandwich';
 
 const Icon = props => {
   const { name } = props;
@@ -9,6 +10,8 @@ const Icon = props => {
         return <LightMode {...props} />
       case 'dark-mode':
         return <DarkMode {...props} />
+      case 'sandwich':
+        return <Sandwich {...props} />
       default:
         return;
     }

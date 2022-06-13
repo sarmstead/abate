@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import TopNav from '../../../components/global/top-nav';
+import Page from '../../../components/global/page';
 
 const Article = (props) => {
   const { articleId } = props
@@ -30,27 +30,28 @@ const Article = (props) => {
 
   if(error) {
     return (
-      <p>Yikes! We came across the following error:
-        <br />
-        <span className='italic text-red-500'>{error}</span>
-      </p>
+      <Page>
+        <p>Yikes! We came across the following error:
+          <br />
+          <span className='italic text-red-500'>{error}</span>
+        </p>
+      </Page>
     )
   }
 
   if (isLoading) {
-    return <h2>Loading...</h2>
+    return (<Page><div className='mt-10 text-black dark:text-white'>Loading...</div></Page>)
   }
 
   return (
-    <>
-      <TopNav />
+    <Page>
       <article className='dark:text-white'>
         <p>{data.title}</p>
         {data.content.map((paragraph, index) => {
           return <p key={index}>{paragraph}</p>
       })}
       </article>
-    </>
+    </Page>
   )
 }
 
