@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react'
 
-import TopNav from '../components/global/top-nav';
+import Page from '../components/global/page';
 
 export default function Home() {
   const [data, setData] = useState({});
@@ -31,34 +31,31 @@ export default function Home() {
   
   if(error) {
     return (
-      <p>Yikes! We came across the following error:
-        <br />
-        <span className='italic text-red-500'>{error}</span>
-      </p>
+      <Page>
+        <p>Yikes! We came across the following error:
+          <br />
+          <span className='italic text-red-500'>{error}</span>
+        </p>
+      </Page>
     )
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (<Page><div className='mt-10 text-black dark:text-white'>Loading...</div></Page>)
   }
 
   return (
-    <>
-      <TopNav />
-      <div className='grid max-w-screen-2xl m-auto p-14 lg:p-24'>
-        <h1 className='mb-10 dark:text-white'>
-          <span className='font-extrabold text-6xl'>Abate</span><br/>
-          <span className='font-light text-2xl'>News Simplified</span>
-        </h1>
-        <h2 className='dark:text-white text-4xl mb-4'>CNN Articles</h2>
-        {
-          data.links.map((link, index) => {
-            return (
-                <Link href={`/news/cnn/${link.id}`} key={index}><a target='_blank' className='font-medium text-3xl mb-6 dark:text-white'>{link.title}</a></Link>
-            )
-          })
-        }
-      </div>
-    </>
+      <Page>
+        <div className='grid mt-10'>
+          <h2 className='dark:text-white text-4xl mb-4'>Recent Articles from CNN</h2>
+          {
+            data.links.map((link, index) => {
+              return (
+                  <Link href={`/news/cnn/${link.id}`} key={index}><a className='underline underline-offset-8 decoration-dashed decoration-primary-teal text-xl mb-4 dark:text-white'>{link.title}</a></Link>
+              )
+            })
+          }
+        </div>
+      </Page>
   )
 }
