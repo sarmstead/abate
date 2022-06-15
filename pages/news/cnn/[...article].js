@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Page from '../../../components/global/page';
+import Citation from '../../../components/news/citation';
 
 const Article = (props) => {
   const { articleId } = props
@@ -28,6 +30,19 @@ const Article = (props) => {
     fetchData()
   }, [articleId])
 
+  const dateFormatter = date => {
+    const options = {
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: 'numeric', 
+      timeZoneName: 'short'
+    }
+    return new Date(date).toLocaleDateString('en-US', options)
+  }
+
   if(error) {
     return (
       <Page>
@@ -45,12 +60,16 @@ const Article = (props) => {
 
   return (
     <Page>
-      <article className='dark:text-white'>
-        <p>{data.title}</p>
+      <nav className='text-complementary-salmon dark:text-primary-teal uppercase font-bold mt-20 mb-8'>
+        <Link href='/'><a>Home</a></Link> | <Link href='/news/cnn'><a>CNN</a></Link>
+      </nav>
+      <article className='dark:text-white mb-20'>
+        <h2 className='mb-7 font-bold mb-20 text-3xl'>{data.title}</h2>
         {data.content.map((paragraph, index) => {
-          return <p key={index}>{paragraph}</p>
+          return <p key={index} className='mb-7 last:mb-0'>{paragraph}</p>
       })}
       </article>
+      <Citation title={data.title} authors={data.authors} link={data.link} datePublished={dateFormatter(data.date.published)} dateRetrieved={dateFormatter(data.date.retrieved)} />
     </Page>
   )
 }
