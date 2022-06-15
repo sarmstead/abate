@@ -12,8 +12,10 @@ const getCNNArticle = (cnnUrl) => {
             const html = pageData.data;
             const $ = cheerio.load(html)
             responseObject.title = $('h2').text();
-            responseObject.byline = $('#byline').text();
-
+            responseObject.authors = $('#byline').text().replace('By ', '').replace(', CNN', '');
+            responseObject.source = 'CNN';
+            responseObject.link = cnnUrl;
+            
             let startDateIndex;
             let endDateIndex;
             for (let i = 0; i < html.length; i++) {
@@ -25,15 +27,30 @@ const getCNNArticle = (cnnUrl) => {
                     endDateIndex = i + 2;
                 }
             }
-            responseObject.date = html.substring(startDateIndex, endDateIndex);
+            const datePublished = new Date(Date.parse(html.substring(startDateIndex, endDateIndex).replace('Updated: ', '')));
+            const dateRetrieved = new Date(Date.now());
+            responseObject.date = { published: datePublished, retrieved: dateRetrieved };
 
             responseObject.editorsNote = $('#editorsNote').text();
             $('.afe4286c p').each(function() {
-                contentArray.push($(this).text())
+              switch($(this).attr('id')) {
+                case 'byline':
+                  return;
+                case 'published datetime':
+                  return;
+                case 'source':
+                  return;
+                case 'editorsNote':
+                  return;
+                default:
+                  contentArray.push($(this).text());
+              }
             })
             responseObject.content = contentArray;
-            responses.push(responseObject)
-            return responses
+
+            responses.push(responseObject);
+            return responses;
+
       })
     )
   })
