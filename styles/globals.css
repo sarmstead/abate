@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply block m-auto justify-items-center bg-white dark:bg-black p-6 md:p-10 lg:py-20 lg:px-28 max-w-screen-2xl;
+  @apply block justify-items-center bg-white dark:bg-black p-4 md:p-10 lg:py-20 lg:px-28;
 }
