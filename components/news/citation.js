@@ -18,13 +18,12 @@ const Citation = props => {
   const handleToggle = (event) => {
     event.preventDefault();
     isOpen ? setIsOpen(false) : setIsOpen(true);
-    console.log(isOpen);
   }
 
   return (
     <aside className='p-4 border border-solid rounded border-complementary-salmon dark:border-primary-teal'>
       <section className='grid grid-cols-2 cursor-pointer' onClick={handleToggle}>
-        <button className='justify-self-start dark:text-white uppercase font-bold'>Bibliographic Data</button>
+        <button className='justify-self-start dark:text-white uppercase font-bold text-left'>Bibliographic Data</button>
         <button className='uppercase font-bold dark:text-primary-teal justify-self-end'>{toggleTitle}</button>
       </section>
       {isOpen &&
