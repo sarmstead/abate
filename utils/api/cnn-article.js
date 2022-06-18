@@ -31,7 +31,7 @@ const getCNNArticle = (cnnUrl) => {
             const dateRetrieved = new Date(Date.now());
             responseObject.date = { published: datePublished, retrieved: dateRetrieved };
 
-            responseObject.editorsNote = $('#editorsNote').text();
+            responseObject.editorsNote = $('#editorsNote').text().replace("Editor's Note: ", '');
             $('.afe4286c p').each(function() {
               switch($(this).attr('id')) {
                 case 'byline':

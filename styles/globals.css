@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply font-serif;
+  }
+}
+
 body {
   @apply block justify-items-center bg-white dark:bg-black p-4 md:p-10 lg:py-20 lg:px-28;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-sans;
 }

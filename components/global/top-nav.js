@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Icon from './icon';
 import Logo from './logo';
 import Sandwich from './icon/sandwich';
+import Link from 'next/link';
 
 const TopNav = () => {
 
@@ -34,9 +35,12 @@ const TopNav = () => {
         <Icon name='sandwich' />
       </button>
      
-      <div className='justify-self-center'>
-        <Logo width='w-24 md:w-32' />
-      </div>
+      <Link href='/'>
+        <div className='justify-self-center cursor-pointer'>
+          <Logo width='w-24 md:w-32' />
+        </div>
+      </Link>
+
       <div className='justify-self-end'>
         <button className='hidden dark:block gap-2' onClick={handleClickLight}>
           <Icon name='light-mode' />

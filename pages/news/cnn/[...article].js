@@ -46,7 +46,7 @@ const Article = (props) => {
   if(error) {
     return (
       <Page>
-        <p>Yikes! We came across the following error:
+        <p className='font-sans mb-2'>Yikes! We came across the following error:
           <br />
           <span className='italic text-red-500'>{error}</span>
         </p>
@@ -55,16 +55,17 @@ const Article = (props) => {
   }
 
   if (isLoading) {
-    return (<Page><div className='mt-10 text-black dark:text-white'>Loading...</div></Page>)
+    return (<Page><div className='mt-10 font-sans uppercase font-bold text-black dark:text-white'>Loading...</div></Page>)
   }
 
   return (
     <Page>
-      <nav className='text-complementary-salmon dark:text-primary-teal uppercase font-bold mt-20 mb-8'>
+      <nav className='font-sans text-complementary-salmon dark:text-primary-teal uppercase font-bold mt-20 mb-8'>
         <Link href='/'><a>Home</a></Link> | <Link href='/news/cnn'><a>CNN</a></Link>
       </nav>
       <article className='dark:text-white mb-20'>
-        <h2 className='mb-7 font-bold mb-20 text-3xl'>{data.title}</h2>
+        <h2 className='mb-7 font-bold mb-20 text-4xl max-w-5xl'>{data.title}</h2>
+        {data.editorsNote && <p className='mb-7 italic'><span className='font-bold'>Editor&apos;s Note: </span>{data.editorsNote}</p>}
         {data.content.map((paragraph, index) => {
           return <p key={index} className='mb-7 last:mb-0'>{paragraph}</p>
       })}
