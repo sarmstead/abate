@@ -20,22 +20,32 @@ const Citation = props => {
     isOpen ? setIsOpen(false) : setIsOpen(true);
   }
 
-  return (
-    <aside className='p-4 border border-solid rounded border-complementary-salmon dark:border-primary-teal'>
-      <section className='grid grid-cols-2 cursor-pointer' onClick={handleToggle}>
-        <button className='justify-self-start dark:text-white uppercase font-bold text-left'>Bibliographic Data</button>
-        <button className='uppercase font-bold dark:text-primary-teal justify-self-end'>{toggleTitle}</button>
-      </section>
-      {isOpen &&
-        <section className='break-words dark:text-white mt-5'>
-          <p className='mb-5'>Title — {title}</p>
-          <p className='mb-5'>Author(s) — {authors}</p>
-          <Link href={link}><a target='_blank'>Original Link — {link}</a></Link>
-          <p className='my-5'>Date Published — {datePublished}</p>
-          <p>Date Retrieved — {dateRetrieved}</p>
+  return (<>
+    {!isOpen &&
+      <aside className='p-4 border border-solid rounded border-black dark:border-primary-teal'>
+        <section className='grid grid-cols-2 cursor-pointer font-sans' onClick={handleToggle}>
+          <button className='justify-self-start dark:text-white uppercase font-bold text-left'>Bibliographic Data</button>
+          <button className='uppercase font-bold dark:text-primary-teal justify-self-end'>{toggleTitle}</button>
         </section>
-      }
-    </aside>
+      </aside>
+    }
+
+    {isOpen &&
+    <aside className='p-4 border border-solid rounded border-complementary-salmon dark:border-primary-teal'>
+      <section className='grid grid-cols-2 cursor-pointer font-sans' onClick={handleToggle}>
+        <button className='justify-self-start dark:text-white uppercase font-bold text-left'>Bibliographic Data</button>
+        <button className='uppercase font-bold text-complementary-salmon dark:text-primary-teal justify-self-end'>{toggleTitle}</button>
+      </section>
+      <section className='break-words dark:text-white mt-5'>
+        <p className='mb-5'>Title — {title}</p>
+        <p className='mb-5'>Author(s) — {authors}</p>
+        <Link href={link}><a target='_blank'>Original Link — {link}</a></Link>
+        <p className='my-5'>Date Published — {datePublished}</p>
+        <p>Date Retrieved — {dateRetrieved}</p>
+      </section>
+    </aside> 
+    }
+    </>
   )
 }
 

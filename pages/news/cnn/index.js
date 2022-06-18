@@ -32,7 +32,7 @@ export default function Home() {
   if(error) {
     return (
       <Page>
-        <p>Yikes! We came across the following error:
+        <p className='font-sans mb-2'>Yikes! We came across the following error:
           <br />
           <span className='italic text-red-500'>{error}</span>
         </p>
@@ -41,17 +41,17 @@ export default function Home() {
   }
 
   if (isLoading) {
-    return (<Page><div className='mt-10 text-black dark:text-white'>Loading...</div></Page>)
+    return (<Page><div className='mt-10 font-sans uppercase font-bold text-black dark:text-white'>Loading...</div></Page>)
   }
 
   return (
     <Page>
       <div className='grid mt-10'>
-        <h2 className='dark:text-white text-4xl mb-4'>All Recent Articles from CNN</h2>
+        <h2 className='dark:text-primary-teal text-4xl font-bold mb-4'>Articles from CNN</h2>
         {
           data.links.map((link, index) => {
             return (
-                <Link href={`/news/cnn/${link.id}`} key={index}><a className='underline underline-offset-8 decoration-dashed decoration-primary-teal text-xl mb-4 dark:text-white'>{link.title}</a></Link>
+                <Link href={`/news/cnn/${link.id}`} key={index}><a className='underline underline-offset-8 decoration-dashed decoration-primary-teal mb-4 dark:text-white'>{link.title}</a></Link>
             )
           })
         }
