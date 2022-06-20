@@ -61,7 +61,7 @@ const Article = (props) => {
   return (
     <Page>
       <nav className='font-sans text-complementary-salmon dark:text-primary-teal uppercase font-bold mt-20 mb-8'>
-        <Link href='/'><a>Home</a></Link> | <Link href='/news/cnn'><a>CNN</a></Link>
+        <Link href='/'><a className='no-underline hover:underline'>Home</a></Link> | <Link href='/news/cnn'><a className='no-underline hover:underline'>CNN</a></Link>
       </nav>
       <article className='dark:text-white mb-20'>
         <h2 className='mb-7 font-bold mb-20 text-4xl max-w-5xl'>{data.title}</h2>

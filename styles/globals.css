@@ -20,3 +20,11 @@ h5,
 h6 {
   @apply font-sans;
 }
+
+p {
+  @apply mb-4 text-black dark:text-white;
+}
+
+a {
+  @apply underline decoration-primary-teal;
+}

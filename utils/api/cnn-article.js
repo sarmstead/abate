@@ -12,7 +12,7 @@ const getCNNArticle = (cnnUrl) => {
             const html = pageData.data;
             const $ = cheerio.load(html)
             responseObject.title = $('h2').text();
-            responseObject.authors = $('#byline').text().replace('By ', '').replace(', CNN', '');
+            responseObject.authors = $('#byline').text();
             responseObject.source = 'CNN';
             responseObject.link = cnnUrl;
             
