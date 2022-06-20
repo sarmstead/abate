@@ -1,3 +1,4 @@
+import Footer from './footer';
 import TopNav from './top-nav';
 
 const Page = props => {
@@ -5,6 +6,7 @@ const Page = props => {
     <>
       <TopNav {...props} />
       {props.children}
+      <Footer {...props} />
     </>
   )
 }
