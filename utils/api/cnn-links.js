@@ -15,7 +15,7 @@ const getCNNLinks = (cnnUrl, num) => {
 
                   console.log($(this).attr('href'))
                     let individualLink = {
-                        id: $(this).attr('href').slice(0),
+                        id: $(this).attr('href'),
                         route: linkAsArray[linkArrayLastIndex - 1],
                         title: $(this).text(),
                         link: $(this).attr('href'),
