@@ -7,8 +7,7 @@ const Citation = props => {
   const [isOpen, setIsOpen] = useState(false)
   const {
     authors,
-    datePublished,
-    dateRetrieved,
+    date,
     link,
     title
   } = props
@@ -40,10 +39,9 @@ const Citation = props => {
         <p className='mb-5'>Title — {title}</p>
         <p className='mb-5'>Contributions — {authors}</p>
         <p>Original Link — <Link href={link}><a target='_blank'>{link}</a></Link></p>
-        <p className='my-5'>Date Published — {datePublished}</p>
-        <p>Date Retrieved — {dateRetrieved}</p>
+        <p className='my-5'>Last Updated — {date}</p>
       </section>
-    </aside> 
+    </aside>
     }
     </>
   )

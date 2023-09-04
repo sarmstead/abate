@@ -30,19 +30,6 @@ const Article = (props) => {
     fetchData()
   }, [articleId])
 
-  const dateFormatter = date => {
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      timeZoneName: 'short'
-    }
-    return new Date(date).toLocaleDateString('en-US', options)
-  }
-
   if(error) {
     return (
       <Page>
@@ -69,7 +56,7 @@ const Article = (props) => {
           return <p key={index} className='mb-7 last:mb-0'>{paragraph}</p>
       })}
       </article>
-      <Citation title={data.title} authors={data.authors} link={data.link} datePublished={dateFormatter(data.date.published)} dateRetrieved={dateFormatter(data.date.retrieved)} />
+      <Citation title={data.title} authors={data.authors} link={data.link} date={data.date} />
     </Page>
   )
 }
