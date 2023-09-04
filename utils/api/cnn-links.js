@@ -10,8 +10,13 @@ const getCNNLinks = (cnnUrl, num) => {
                 const html = response.data;
                 const $ = cheerio.load(html);
                 $('li a').each(function() {
+                  const linkAsArray = $(this).attr('href').split('/')
+                  const linkArrayLastIndex = linkAsArray.length - 1
+
+                  console.log($(this).attr('href'))
                     let individualLink = {
-                        id: $(this).attr('href').split('/')[3],
+                        id: $(this).attr('href').slice(0),
+                        route: linkAsArray[linkArrayLastIndex - 1],
                         title: $(this).text(),
                         link: $(this).attr('href'),
                     }

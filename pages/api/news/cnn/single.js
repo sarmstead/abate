@@ -2,7 +2,7 @@ import getCNNArticle from '../../../../utils/api/cnn-article'
 
 const handler = async (req, res) => {
   const { id } = req.query
-  const endpoint = `https://lite.cnn.com/en/article/${id}`
+  const endpoint = `https://lite.cnn.com${id}`
 
   try {
     const article = await getCNNArticle(endpoint)

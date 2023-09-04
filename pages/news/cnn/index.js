@@ -7,7 +7,7 @@ export default function Home() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-  
+
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true)
@@ -24,11 +24,11 @@ export default function Home() {
       }
       setIsLoading(false)
     }
-    
+
     fetchData()
-    
+
   }, [])
-  
+
   if(error) {
     return (
       <Page>
@@ -51,7 +51,7 @@ export default function Home() {
         {
           data.links.map((link, index) => {
             return (
-                <Link href={`/news/cnn/${link.id}`} key={index}><a className='underline underline-offset-8 decoration-dashed decoration-primary-teal mb-4 dark:text-white'>{link.title}</a></Link>
+                <Link href={`/news/cnn/${link.route}?vendor_slug=${link.id}`} key={index}><a className='underline underline-offset-8 decoration-dashed decoration-primary-teal mb-4 dark:text-white'>{link.title}</a></Link>
             )
           })
         }
