@@ -9,7 +9,7 @@ const Article = (props) => {
   const [ data, setData ] = useState({})
   const [ isLoading, setIsLoading ] = useState(true)
   const [ error, setError ] = useState(false)
-  
+
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true)
@@ -29,19 +29,6 @@ const Article = (props) => {
 
     fetchData()
   }, [articleId])
-
-  const dateFormatter = date => {
-    const options = {
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric', 
-      hour: 'numeric', 
-      minute: 'numeric', 
-      timeZoneName: 'short'
-    }
-    return new Date(date).toLocaleDateString('en-US', options)
-  }
 
   if(error) {
     return (
@@ -65,19 +52,19 @@ const Article = (props) => {
       </nav>
       <article className='dark:text-white mb-20'>
         <h2 className='mb-7 font-bold mb-20 text-4xl max-w-5xl'>{data.title}</h2>
-        {data.editorsNote && <p className='mb-7 italic'><span className='font-bold'>Editor&apos;s Note: </span>{data.editorsNote}</p>}
         {data.content.map((paragraph, index) => {
           return <p key={index} className='mb-7 last:mb-0'>{paragraph}</p>
       })}
       </article>
-      <Citation title={data.title} authors={data.authors} link={data.link} datePublished={dateFormatter(data.date.published)} dateRetrieved={dateFormatter(data.date.retrieved)} />
+      <Citation title={data.title} authors={data.authors} link={data.link} date={data.date} />
     </Page>
   )
 }
 
 export const getServerSideProps = (context) => {
+
   return {
-    props: { articleId: context.params.article[0] }
+    props: { articleId: context.query.vendor_slug }
   }
 }
 
