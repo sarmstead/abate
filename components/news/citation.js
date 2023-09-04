@@ -38,7 +38,7 @@ const Citation = props => {
       <section className='break-words dark:text-white mt-5'>
         <p className='mb-5'>Title — {title}</p>
         <p className='mb-5'>Contributions — {authors}</p>
-        <p>Original Link — <Link href={link}><a target='_blank'>{link}</a></Link></p>
+        <p>Original Link — <Link href={link}>{link}</Link></p>
         <p className='my-5'>Last Updated — {date}</p>
       </section>
     </aside>

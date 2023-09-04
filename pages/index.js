@@ -51,7 +51,7 @@ export default function Home() {
           {
             data.links.map((link, index) => {
               return (
-                  <Link href={`/news/cnn/${link.route}?vendor_slug=${link.id}`} key={index}><a className='underline underline-offset-8 decoration-dashed decoration-primary-teal mb-4 dark:text-white'>{link.title}</a></Link>
+                  <Link href={`/news/cnn/${link.route}?vendor_slug=${link.id}`} key={index} className='underline underline-offset-8 decoration-dashed decoration-primary-teal mb-4 dark:text-white'>{link.title}</Link>
               )
             })
           }
