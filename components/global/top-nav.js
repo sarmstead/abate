@@ -19,7 +19,7 @@ const TopNav = () => {
     localStorage.theme = 'light'
     document.documentElement.classList.remove('dark')
     return;
-    
+
   }
 
   const handleClickDark = (event) => {
@@ -35,11 +35,9 @@ const TopNav = () => {
         <button className='justify-self-start'>
           <Icon name='sandwich' />
         </button>
-      
-        <Link href='/'>
-          <div className='justify-self-center cursor-pointer'>
-            <Logo width='w-24 md:w-32' />
-          </div>
+
+        <Link href='/' className='justify-self-center cursor-pointer'>
+          <Logo width='w-24 md:w-32' />
         </Link>
 
         <div className='justify-self-end'>
