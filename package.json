@@ -15,7 +15,7 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.11",
     "next": "^14.1.4",
     "react": "^18.2.0",
