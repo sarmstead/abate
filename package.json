@@ -17,7 +17,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
-    "next": "^13.4.19",
+    "next": "^14.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -32,7 +32,7 @@
     "eslint": "^8.16.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^16.2.0",
-    "eslint-config-next": "^13.4.19",
+    "eslint-config-next": "^14.1.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-wesbos": "^3.0.2",
     "eslint-plugin-html": "^6.2.0",
